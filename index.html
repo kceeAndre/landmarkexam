@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="icon" type="image/png" href="landmark.png">
-<title>LANDMARK ACADEMY CBT</title>
-<link rel="stylesheet" href="style.css">
+    <title>LANDMARK ACADEMY CBT</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<button onclick="adminLogin()" class="adminBtn">Admin Login</button>
-<<div id="adminOverlay" class="adminOverlay" style="display:none;">
 
-<div id="adminLoginBox" class="adminLoginBox">
+    <!-- Admin login button -->
+    <button id="adminBtn" class="adminBtn" onclick="adminLogin()">Admin Login</button>
 
-<h3>Admin Login</h3>
+    <!-- Admin overlay -->
+    <div id="adminOverlay" class="adminOverlay" style="display:none;">
+        <div id="adminLoginBox" class="adminLoginBox">
+            <h3>Admin Login</h3>
+            <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+            <br><br>
+            <button id="adminLoginSubmit">Login</button>
+            <button id="adminLoginCancel">Cancel</button>
+            <p id="adminError" class="errorText"></p>
+        </div>
+    </div>
 
-<input type="password" id="adminPassword" placeholder="Enter Admin Password">
+    <div class="container">
+        <img src="logo.jpg" class="logo">
+        <h1>LANDMARK ACADEMY</h1>
+        <h2>CBT EXAMINATION PORTAL</h2>
 
-<br><br>
-
-<button onclick="verifyAdmin()">Login</button>
-<button onclick="closeAdmin()">Cancel</button>
-
-<p id="adminError" class="errorText"></p>
-
-</div>
-
-</div>
-<div class="container">
-    
-
-<img src="logo.jpg" class="logo">
-
-<h1>LANDMARK ACADEMY</h1>
-<h2>CBT EXAMINATION PORTAL</h2>
-
-<div class="grid">
-
-<a href="jss3.html" class="card">JSS3</a>
-<a href="sss1.html" class="card">SSS1</a>
-<a href="sss2.html" class="card">SSS2</a>
-
-</div>
-
-</div>
+        <div class="grid">
+            <a href="jss3.html" class="card">JSS3</a>
+            <a href="sss1.html" class="card">SSS1</a>
+            <a href="sss2.html" class="card">SSS2</a>
+        </div>
+    </div>
 
 </body>
+<script src="script.js" type="module"></script>
 </html>
-<script src="script.js"></script>

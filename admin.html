@@ -1,193 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
- <link rel="icon" type="image/png" href="landmark.png">
-<title>LANDMARK ACADEMY CBT ADMIN</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <title>LANDMARK ACADEMY CBT ADMIN</title>
+    <link rel="icon" type="image/png" href="landmark.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
- 
-<div class="adminControls">
-   <a href="index.html">
-<button class="homeBtn"> Home</button>
-</a>
-   <button onclick="updateButtonColors()">Refresh Exams</button>
-   <button onclick="location.reload()">Reload Page</button>
-</div>
-<h2>LANDMARK ACADEMY CBT CONTROL PANEL</h2>
 
-<div class="adminGrid">
-    <!--FOR JSS3 SUBJECTS -->
-<button data-exam="JSS3_MATH" onclick="openConfig('JSS3_MATH')">JSS3 Mathematics</button>
-
-<button data-exam="JSS3_CIVIC" onclick="openConfig('JSS3_CIVIC')">JSS3 Civic Education</button>
-
-<button data-exam="JSS3_BASIC" onclick="openConfig('JSS3_BASIC')">JSS3 Basic Science</button>
-
-<button data-exam="JSS3_SOCIAL" onclick="openConfig('JSS3_SOCIAL')">JSS3 Social Studies</button>
-
-<button data-exam="JSS3_CRS" onclick="openConfig('JSS3_CRS')">JSS3 CRS</button>
-
-<button data-exam="JSS3_BUS" onclick="openConfig('JSS3_BUS')">JSS3 Business Studies</button>
-
-<button data-exam="JSS3_AGRIC" onclick="openConfig('JSS3_AGRIC')">JSS3 Agricultural Science</button>
-
-<button data-exam="JSS3_HOME" onclick="openConfig('JSS3_HOME')">JSS3 Home Economics</button>
-
-<button data-exam="JSS3_PHE" onclick="openConfig('JSS3_PHE')">JSS3 PHE</button>
-
-<button data-exam="JSS3_BASICT" onclick="openConfig('JSS3_BASICT')">JSS3 Basic Technology</button>
-
-<button data-exam="JSS3_ENT" onclick="openConfig('JSS3_ENT')">JSS3 Entrepreneurship</button>
-
-<button data-exam="JSS3_ICT" onclick="openConfig('JSS3_ICT')">JSS3 ICT</button>
-
-<button data-exam="JSS3_LIT" onclick="openConfig('JSS3_LIT')">JSS3 Literature</button>
-
- 
-<!-- FOR SSS1 SUBJECTS-->
-
-<button data-exam="SSS1_MATH" onclick="openConfig('SSS1_MATH')">SSS1 Mathematics</button>
-
-<button data-exam="SSS1_MAR" onclick="openConfig('SSS1_MAR')">SSS1 Marketing</button>
-
-<button data-exam="SSS1_BIO" onclick="openConfig('SSS1_BIO')">SSS1 Biology</button>
-
-<button data-exam="SSS1_AGRIC" onclick="openConfig('SSS1_AGRIC')">SSS2 Agricultural science</button>
-
-<button data-exam="SSS1_CHEM" onclick="openConfig('SSS1_CHEM')">SSS1 Chemistry</button>
-
-<button data-exam="SSS1_GOV" onclick="openConfig('SSS1_GOV')">SSS1 Govrnment</button>
-
-<button data-exam="SSS1_CIVIC" onclick="openConfig('SSS1_CIVIC')">SSS1 Civic Education</button>
-
-<button data-exam="SSS1_GEO" onclick="openConfig('SSS1_GEO')">SSS1 Geography</button>
-
-<button data-exam="SSS1_DT" onclick="openConfig('SSS1_DT')">SSS1 Digtal Technology</button>
-
-<button data-exam="SSS1_COMC" onclick="openConfig('SSS1_COMC')">SSS1 Commerce</button>
-
-<!-- FOR SSS2 SUBJECTS-->
-
-<button data-exam="SSS2_MATH" onclick="openConfig('SSS2_MATH')">SSS2 Mathematics</button>
-
-<button data-exam="SSS2_MAR" onclick="openConfig('SSS2_MAR')">SSS2 Marketing</button>
-
-<button data-exam="SSS2_BIO" onclick="openConfig('SSS2_BIO')">SSS2 Biology</button>
-
-<button data-exam="SSS2_AGRIC" onclick="openConfig('SSS2_AGRIC')">SSS2 Agricultural science</button>
-
-<button data-exam="SSS2_CHEM" onclick="openConfig('SSS2_CHEM')">SSS2 Chemistry</button>
-
-<button data-exam="SSS2_ECO" onclick="openConfig('SSS2_ECO')">SSS2 Economics</button>
-
-<button data-exam="SSS2_CIVIC" onclick="openConfig('SSS2_CIVIC')">SSS2 Civic Education</button>
-
-<button data-exam="SSS2_GEO" onclick="openConfig('SSS2_GEO')">SSS2 Geography</button>
-
-<button data-exam="SSS2_DT" onclick="openConfig('SSS2_DT')">SSS2 Digtal Technology</button>
-
-</div>
-
-
-<div id="configBox" style="display:none">
-
-<h3 id="examTitle"></h3>
-
-<label>Password</label>
-<br>
-<input type="text" id="examPassword">
-
-<br><br>
-
-<label>Time (Minutes)</label>
-<br>
-<input type="number" id="examTime">
-
-<br><br>
-
-<label>Enable Exam</label>
-<input type="checkbox" id="examEnable">
-
-<br><br>
-
-<button onclick="saveExam()">Save</button>
-
-</div>
-
-
-
-<script>
-
-let currentExam="";
-
-
-function openConfig(exam){
-
-currentExam=exam;
-
-document.getElementById("configBox").style.display="block";
-
-document.getElementById("examTitle").innerHTML=exam;
-
-let settings=JSON.parse(localStorage.getItem(exam));
-
-if(settings){
-
-document.getElementById("examPassword").value=settings.password;
-document.getElementById("examTime").value=settings.time;
-document.getElementById("examEnable").checked=settings.enabled;
-
-}
-
-}
-
-
-function saveExam(){
-
-let pass=document.getElementById("examPassword").value;
-
-let time=document.getElementById("examTime").value;
-
-let enabled=document.getElementById("examEnable").checked;
-
-let settings={
-
-password:pass,
-time:time,
-enabled:enabled
-
-};
-
-localStorage.setItem(currentExam,JSON.stringify(settings));
-
-alert("Exam settings saved");
-
-}
-function updateButtonColors(){
-
-  let buttons=document.querySelectorAll(".adminGrid button");
-
-  buttons.forEach(btn=>{
-    let examID = btn.getAttribute("data-exam"); // Use data-exam
-    let settings = JSON.parse(localStorage.getItem(examID));
-
-    if(settings && settings.enabled){
-      btn.style.background="#28a745"; // Green
-    } else {
-      btn.style.background="#dc3545"; // Red
-    }
-  });
-
-}
-
-// Call it once when admin panel loads
-updateButtonColors();
-</script>
+    <div class="adminControls">
+        <a href="index.html">
+            <button class="homeBtn">Home</button>
+        </a>
+        <button onclick="updateButtonColors()">Refresh Exams</button>
+        <button onclick="location.reload()">Reload Page</button>
+    </div>
+
+    <h2>LANDMARK ACADEMY CBT CONTROL PANEL</h2>
+
+    <div class="adminGrid">
+        <button data-exam="JSS3_MATH" onclick="openConfig('JSS3_MATH')">JSS3 Mathematics</button>
+        <button data-exam="JSS3_CIVIC" onclick="openConfig('JSS3_CIVIC')">JSS3 Civic Education</button>
+        <button data-exam="JSS3_BASIC" onclick="openConfig('JSS3_BASIC')">JSS3 Basic Science</button>
+        <button data-exam="JSS3_SOCIAL" onclick="openConfig('JSS3_SOCIAL')">JSS3 Social Studies</button>
+        <button data-exam="JSS3_CRS" onclick="openConfig('JSS3_CRS')">JSS3 CRS</button>
+        <button data-exam="JSS3_BUS" onclick="openConfig('JSS3_BUS')">JSS3 Business Studies</button>
+        <button data-exam="JSS3_AGRIC" onclick="openConfig('JSS3_AGRIC')">JSS3 Agricultural Science</button>
+        <button data-exam="JSS3_HOME" onclick="openConfig('JSS3_HOME')">JSS3 Home Economics</button>
+        <button data-exam="JSS3_PHE" onclick="openConfig('JSS3_PHE')">JSS3 PHE</button>
+        <button data-exam="JSS3_BASICT" onclick="openConfig('JSS3_BASICT')">JSS3 Basic Technology</button>
+        <button data-exam="JSS3_ENT" onclick="openConfig('JSS3_ENT')">JSS3 Entrepreneurship</button>
+        <button data-exam="JSS3_ICT" onclick="openConfig('JSS3_ICT')">JSS3 ICT</button>
+        <button data-exam="JSS3_LIT" onclick="openConfig('JSS3_LIT')">JSS3 Literature</button>
+
+        <button data-exam="SSS1_MATH" onclick="openConfig('SSS1_MATH')">SSS1 Mathematics</button>
+        <button data-exam="SSS1_MAR" onclick="openConfig('SSS1_MAR')">SSS1 Marketing</button>
+        <button data-exam="SSS1_BIO" onclick="openConfig('SSS1_BIO')">SSS1 Biology</button>
+        <button data-exam="SSS1_AGRIC" onclick="openConfig('SSS1_AGRIC')">SSS1 Agricultural Science</button>
+        <button data-exam="SSS1_CHEM" onclick="openConfig('SSS1_CHEM')">SSS1 Chemistry</button>
+        <button data-exam="SSS1_GOV" onclick="openConfig('SSS1_GOV')">SSS1 Government</button>
+        <button data-exam="SSS1_CIVIC" onclick="openConfig('SSS1_CIVIC')">SSS1 Civic Education</button>
+        <button data-exam="SSS1_GEO" onclick="openConfig('SSS1_GEO')">SSS1 Geography</button>
+        <button data-exam="SSS1_DT" onclick="openConfig('SSS1_DT')">SSS1 Digital Technology</button>
+        <button data-exam="SSS1_COMC" onclick="openConfig('SSS1_COMC')">SSS1 Commerce</button>
+
+        <button data-exam="SSS2_MATH" onclick="openConfig('SSS2_MATH')">SSS2 Mathematics</button>
+        <button data-exam="SSS2_MAR" onclick="openConfig('SSS2_MAR')">SSS2 Marketing</button>
+        <button data-exam="SSS2_BIO" onclick="openConfig('SSS2_BIO')">SSS2 Biology</button>
+        <button data-exam="SSS2_AGRIC" onclick="openConfig('SSS2_AGRIC')">SSS2 Agricultural Science</button>
+        <button data-exam="SSS2_CHEM" onclick="openConfig('SSS2_CHEM')">SSS2 Chemistry</button>
+        <button data-exam="SSS2_ECO" onclick="openConfig('SSS2_ECO')">SSS2 Economics</button>
+        <button data-exam="SSS2_CIVIC" onclick="openConfig('SSS2_CIVIC')">SSS2 Civic Education</button>
+        <button data-exam="SSS2_GEO" onclick="openConfig('SSS2_GEO')">SSS2 Geography</button>
+        <button data-exam="SSS2_DT" onclick="openConfig('SSS2_DT')">SSS2 Digital Technology</button>
+    </div>
+
+    <div id="configBox" style="display:none">
+        <h3 id="examTitle"></h3>
+
+        <label>Password</label>
+        <br>
+        <input type="text" id="examPassword">
+        <br><br>
+
+        <label>Time (Minutes)</label>
+        <br>
+        <input type="number" id="examTime">
+        <br><br>
+
+        <label>Enable Exam</label>
+        <input type="checkbox" id="examEnable">
+        <br><br>
+
+        <button onclick="saveExam()">Save</button>
+    </div>
+
+    <script type="module">
+        import { db } from "./firebase-config.js";
+        import { ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        let currentExam = "";
+
+        window.openConfig = function(exam) {
+            currentExam = exam;
+            document.getElementById("configBox").style.display = "block";
+            document.getElementById("examTitle").innerText = exam;
+
+            get(ref(db, "examSettings/" + exam)).then(snapshot => {
+                let settings = snapshot.val();
+                if (settings) {
+                    document.getElementById("examPassword").value = settings.password;
+                    document.getElementById("examTime").value = settings.time;
+                    document.getElementById("examEnable").checked = settings.enabled;
+                } else {
+                    document.getElementById("examPassword").value = "";
+                    document.getElementById("examTime").value = 40;
+                    document.getElementById("examEnable").checked = false;
+                }
+            });
+        }
+
+        window.saveExam = function() {
+            let settings = {
+                password: document.getElementById("examPassword").value,
+                time: parseInt(document.getElementById("examTime").value),
+                enabled: document.getElementById("examEnable").checked
+            };
+
+            set(ref(db, "examSettings/" + currentExam), settings).then(() => {
+                alert("Exam settings saved!");
+                updateButtonColors();
+            });
+        }
+
+        window.updateButtonColors = function() {
+            let buttons = document.querySelectorAll(".adminGrid button");
+            buttons.forEach(btn => {
+                let examID = btn.getAttribute("data-exam");
+                get(ref(db, "examSettings/" + examID)).then(snapshot => {
+                    let settings = snapshot.val();
+                    btn.style.background = (settings && settings.enabled) ? "#28a745" : "#dc3545";
+                });
+            });
+        }
+
+        updateButtonColors();
+    </script>
 
 </body>
 

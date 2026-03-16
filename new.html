@@ -1,0 +1,147 @@
+Perfect! Let’s rewrite your HTML pages cleanly so that **all buttons and subject links work via `script.js`** and you no longer need inline `onclick`. I’ll make the changes for: **index.html, jss3.html, sss1.html, sss2.html**.
+
+I’ll also make the **admin button, back buttons, and subject links fully functional via DOMContentLoaded** in your existing `script.js`.
+
+---
+
+## **1️⃣ index.html**
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="landmark.png">
+    <title>LANDMARK ACADEMY CBT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Admin login button -->
+    <button id="adminBtn" class="adminBtn">Admin Login</button>
+
+    <!-- Admin overlay -->
+    <div id="adminOverlay" class="adminOverlay" style="display:none;">
+        <div id="adminLoginBox" class="adminLoginBox">
+            <h3>Admin Login</h3>
+            <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+            <br><br>
+            <button id="adminLoginSubmit">Login</button>
+            <button id="adminLoginCancel">Cancel</button>
+            <p id="adminError" class="errorText"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <img src="logo.jpg" class="logo">
+        <h1>LANDMARK ACADEMY</h1>
+        <h2>CBT EXAMINATION PORTAL</h2>
+
+        <div class="grid">
+            <a href="jss3.html" class="card">JSS3</a>
+            <a href="sss1.html" class="card">SSS1</a>
+            <a href="sss2.html" class="card">SSS2</a>
+        </div>
+    </div>
+
+</body>
+<script src="script.js" type="module"></script>
+</html>
+```
+
+---
+
+## **2️⃣ jss3.html** (same pattern applies to sss1 & sss2)
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="landmark.png">
+    <title>JSS3 Subjects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>JSS3 Subjects</h1>
+
+    <div class="subject-grid">
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSfCo_viFX9ozrxKl_eHHHQYDYtToBOThNgDx3Q1sh4dx6tDxQ/viewform?usp=pp_url&entry.615000732=2026-03-03" data-examid="JSS3_BASIC">Basic Science</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSftFWk6l41kDTJzov8tzoOi49kTUYe1Jrg-iTQfUy8UYc_8aw/viewform?usp=pp_url&entry.1388570121=2026-03-03" data-examid="JSS3_CIVIC">Civic Education</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSf3ASAQhz8UR7ZGBx3M4z7UZ-yb9YI_YvhMJYH9Uu2SRdi1qw/viewform?usp=pp_url&entry.1244657360=2026-03-03" data-examid="JSS3_SOCIAL">Social Studies</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSc6Wkg6S-TIdTIFcZZNv6mVGgfxwVJ6HszCPKhdKRk0uZg17g/viewform?usp=pp_url&entry.1051807045=2026-03-03" data-examid="JSS3_CRS">CRS</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSd3pyNk91wVZ5bFYwp5uKyXI3CzBjNE2-POviNL8pfkGZzMAA/viewform?usp=pp_url&entry.129685382=2026-03-04" data-examid="JSS3_BUS">Business Studies</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLScKIhnny5dlq_tJfEQ6DxjyXPceMNsHMBo7lRyRom676qqGhQ/viewform?usp=pp_url&entry.571693870=2026-03-04" data-examid="JSS3_AGRIC">Agricultural Science</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSfb-94S3TKI6FFrIRmghgoFFoZNz2F8yEJoG_NjNRAmkEwEHA/viewform?usp=pp_url&entry.1463586483=2026-03-04" data-examid="JSS3_HOME">Home Economics</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSfGWYzpvbqD1yV1BZMvlXvHajYpHaQqNN95u3MAJeikbLke1Q/viewform?usp=pp_url&entry.154735659=2026-03-03" data-examid="JSS3_PHE">PHE</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSckFzRCdthVIa04GNhWdLKaswZKNZB-r_kc-pGbB1y2jS3KWg/viewform?usp=pp_url&entry.1715238262=2026-03-03" data-examid="JSS3_MATH">Mathematics</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSdbe5bjvXfjESezxoI6TF83p4cysk99CsPrkSOWkr_vPfUXUw/viewform?usp=pp_url&entry.803629130=2026-03-04" data-examid="JSS3_ENT">Entrepreneurship</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSfSBv_Sj58uUQehbzz1aCkJBsIKOjAkdPmKLp_wm2cBrp09Gw/viewform?usp=pp_url&entry.1157912288=2026-03-09" data-examid="JSS3_BASICT">Basic Technology</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSczjahCZ3Oj37r9c4BtQSKt3zPkv6KcHkPeBLVXVboalNWspA/viewform?usp=pp_url&entry.37345735=2026-03-11" data-examid="JSS3_ICT">ICT</a>
+
+        <a class="subject" data-link="https://docs.google.com/forms/d/e/1FAIpQLSeUfX3DWnZWRlqZps0YdQKojK6thBmSqMu25JdZvQZl3NH6WQ/viewform?usp=pp_url&entry.1116863442=2026-03-15" data-examid="JSS3_LIT">Literature</a>
+
+    </div>
+
+    <button class="backBtn">⬅ Back</button>
+
+</body>
+<script src="script.js" type="module"></script>
+</html>
+```
+
+---
+
+### **3️⃣ sss1.html and sss2.html**
+
+* Use the same pattern as `jss3.html`.
+* Add `data-link` and `data-examid` for each subject.
+* Add **back button** with class `backBtn`.
+* Remove all inline `onclick`.
+
+---
+
+### ✅ **script.js DOMContentLoaded section (already included)**
+
+```js
+window.addEventListener('DOMContentLoaded', () => {
+
+    // Admin login button
+    const adminBtn = document.getElementById('adminBtn');
+    if (adminBtn) adminBtn.addEventListener('click', adminLogin);
+
+    // Admin overlay buttons
+    const adminSubmit = document.getElementById('adminLoginSubmit');
+    if (adminSubmit) adminSubmit.addEventListener('click', verifyAdmin);
+
+    const adminCancel = document.getElementById('adminLoginCancel');
+    if (adminCancel) adminCancel.addEventListener('click', closeAdmin);
+
+    // Back buttons
+    document.querySelectorAll('.backBtn').forEach(btn => {
+        btn.addEventListener('click', goBack);
+    });
+
+    // Subject links (all <a class="subject">)
+    document.querySelectorAll('.subject').forEach(sub => {
+        const link = sub.dataset.link;
+        const examID = sub.dataset.examid;
+        sub.addEventListener('click', () => startExam(link, examID));
+    });
+
+});

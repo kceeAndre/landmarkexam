@@ -1,71 +1,69 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-     <link rel="icon" type="image/png" href="landmark.png">
-<title>LANDMARK ACADEMY CBT</title>
+    <meta charset="UTF-8">
+    <title>LANDMARK ACADEMY CBT</title>
+    <link rel="icon" type="image/png" href="landmark.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" type="module"></script>
 
-<link rel="stylesheet" href="style.css">
+    <style>
+        #examArea {
+            display: none;
+            width: 100%;
+            height: 100vh;
+        }
 
-<script src="password.js"></script>
-<script src="script.js"></script>
+        #examFrame {
+            width: 100%;
+            height: 90vh;
+            border: none;
+        }
 
-<style>
+        #timerBox {
+            background: #111;
+            color: white;
+            padding: 10px;
+            font-size: 22px;
+        }
 
-#examArea{
-display:none;
-width:100%;
-height:100vh;
-}
+        .centerbox {
+            text-align: center;
+            margin-top: 100px;
+        }
 
-#examFrame{
-width:100%;
-height:90vh;
-border:none;
-}
-
-#timerBox{
-background:#111;
-color:white;
-padding:10px;
-font-size:22px;
-}
-
-</style>
-
+        .backBtn {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body oncontextmenu="return false">
 
-<div class="centerbox" id="loginBox">
+    <!-- LOGIN BOX -->
+    <div class="centerbox" id="loginBox">
+        <h2>Enter Exam Password</h2>
+        <input type="password" id="password" placeholder="Enter Password">
+        <br><br>
+        <button onclick="checkPassword()">Start Exam</button>
+        <br><br>
+        <h3 id="count"></h3>
+    </div>
 
-<h2>Enter Exam Password</h2>
+    <!-- EXAM AREA -->
+    <div id="examArea">
+        <div id="timerBox">
+            Time Remaining: <span id="timer">00:00</span>
+        </div>
+        <iframe id="examFrame"></iframe>
+    </div>
 
-<input type="password" id="password">
+    <button onclick="goBack()" class="backBtn">⬅ Back</button>
 
-<br>
-
-<button onclick="checkPassword()">Start Exam</button>
-
-<br><br>
-
-<h3 id="count"></h3>
-
-</div>
-
-
-<div id="examArea">
-
-<div id="timerBox">
-
-Time Remaining: <span id="timer">00:00</span>
-
-</div>
-
-<iframe id="examFrame"></iframe>
-
-</div>
-<button onclick="goBack()" class="backBtn">⬅ Back</button>
 </body>
 
 </html>
